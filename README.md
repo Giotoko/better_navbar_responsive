@@ -1,4 +1,4 @@
-# better_screenshot_prevention
+# better_navbar_responsive
 
 have you ever created a gorgeous app that works like wonders on your phone <br>
 and then someone using system UI navigationbar says "the content hides behind the navigation bar"?!<br>
