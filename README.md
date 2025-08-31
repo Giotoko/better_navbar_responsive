@@ -3,6 +3,7 @@
 have you ever created a gorgeous app that works like wonders on your phone <br>
 and then someone using system UI navigationbar says "the content hides behind the navigation bar"?!<br>
 well it happened to me, so i created this to know how much space the navigation bar takes (if any) <br>
+and share it in case it might be useful for someone <br>
 
 
 
@@ -70,7 +71,7 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    final screenHeight = MediaQuery.of(context).size.height;
+    final screenHeight = MediaQuery.sizeOf(context).height;
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
