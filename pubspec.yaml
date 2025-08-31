@@ -1,6 +1,6 @@
 name: better_navbar_responsive
 description: "A flutter package to get the height occupied by the Android system UI navigation bar"
-version: 0.0.3
+version: 0.0.4
 homepage: https://jhonaiquel.com/
 
 environment:

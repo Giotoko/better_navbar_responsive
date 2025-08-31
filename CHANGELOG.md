@@ -1,3 +1,7 @@
+## 0.0.4
+
+* fix name
+
 ## 0.0.3
 
 * fix example
