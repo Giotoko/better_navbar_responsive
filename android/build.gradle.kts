@@ -2,7 +2,7 @@ group = "com.jhonaiquel.better_navbar_responsive"
 version = "1.0-SNAPSHOT"
 
 buildscript {
-    ext.kotlin_version = "2.1.0"
+    val kotlinVersion = "2.1.0"
     repositories {
         google()
         mavenCentral()
@@ -10,7 +10,7 @@ buildscript {
 
     dependencies {
         classpath("com.android.tools.build:gradle:8.7.3")
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version")
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion")
     }
 }
 
@@ -21,8 +21,9 @@ allprojects {
     }
 }
 
-apply plugin: "com.android.library"
-apply plugin: "kotlin-android"
+plugins {
+    id("com.android.library")
+}
 
 android {
     namespace = "com.jhonaiquel.better_navbar_responsive"
@@ -34,13 +35,13 @@ android {
         targetCompatibility = JavaVersion.VERSION_17
     }
 
-    kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_17
-    }
-
     sourceSets {
-        main.java.srcDirs += "src/main/kotlin"
-        test.java.srcDirs += "src/test/kotlin"
+        getByName("main") {
+            java.srcDirs("src/main/kotlin")
+        }
+        getByName("test") {
+            java.srcDirs("src/test/kotlin")
+        }
     }
 
     defaultConfig {
@@ -53,13 +54,15 @@ android {
     }
 
     testOptions {
-        unitTests.all {
-            useJUnitPlatform()
-
-            testLogging {
-               events "passed", "skipped", "failed", "standardOut", "standardError"
-               outputs.upToDateWhen {false}
-               showStandardStreams = true
+        unitTests {
+            isIncludeAndroidResources = true
+            all {
+                it.useJUnitPlatform()
+                it.outputs.upToDateWhen { false }
+                it.testLogging {
+                    events("passed", "skipped", "failed", "standardOut", "standardError")
+                    showStandardStreams = true
+                }
             }
         }
     }
